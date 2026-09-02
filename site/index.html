@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dominic Yeakel — Cybersecurity Portfolio</title>
+<meta name="description" content="Dominic Yeakel's cybersecurity portfolio, focused on identity and access management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e16;
+    --bg-raised: #10182a;
+    --line: #263151;
+    --line-soft: #1a2238;
+    --text: #e9edf6;
+    --text-muted: #97a2ba;
+    --gold: #d7a44e;
+    --gold-soft: rgba(215, 164, 78, 0.14);
+    --teal: #57d0c2;
+    --teal-soft: rgba(87, 208, 194, 0.14);
+    --radius-card: 18px;
+    --max: 980px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: "Space Grotesk", "Inter", sans-serif;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--text);
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  /* ---------- Taskbar ---------- */
+
+  .taskbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(10, 14, 22, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .taskbar-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .brand {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 4px 10px;
+    color: var(--gold);
+  }
+
+  .primary-links {
+    display: flex;
+    gap: 22px;
+    flex: 1;
+  }
+
+  .primary-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    transition: color 0.15s ease;
+  }
+
+  .primary-links a:hover { color: var(--text); }
+
+  .repo-menu { position: relative; }
+
+  .repo-menu summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .repo-menu summary::-webkit-details-marker { display: none; }
+
+  .repo-menu summary::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--text-muted);
+    border-bottom: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
+    margin-top: -3px;
+  }
+
+  .repo-menu[open] summary::after { transform: rotate(-135deg); margin-top: 2px; }
+
+  .repo-menu-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    gap: 2px;
+    min-width: 340px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .repo-menu-panel a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+
+  .repo-menu-panel a:hover { background: var(--line-soft); color: var(--text); }
+
+  .repo-menu-panel .repo-root {
+    grid-column: 1 / -1;
+    color: var(--teal);
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 4px;
+    padding-bottom: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .primary-links { display: none; }
+    .repo-menu-panel { grid-template-columns: 1fr; min-width: 220px; }
+  }
+
+  /* ---------- Layout shell ---------- */
+
+  main { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  section { padding: 72px 0; border-bottom: 1px solid var(--line-soft); }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow-free h2 { font-size: 1.6rem; margin-bottom: 14px; }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 64px;
+  }
+
+  .hero h1 { font-size: 2.7rem; margin-bottom: 18px; }
+
+  .hero .lede {
+    color: var(--text-muted);
+    font-size: 1.08rem;
+    max-width: 46ch;
+    margin: 0 0 30px;
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary, .btn-ghost {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 0.94rem;
+    font-weight: 500;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: #191204;
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+
+  .btn-primary:hover, .btn-ghost:hover { transform: translateY(-1px); }
+
+  /* Access badge card */
+
+  .badge-card {
+    background: linear-gradient(165deg, var(--bg-raised), #0c1120);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .badge-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% -10%, var(--gold-soft), transparent 55%);
+    pointer-events: none;
+  }
+
+  .badge-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .badge-chip {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--gold-soft);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .badge-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    color: var(--teal);
+  }
+
+  .badge-status .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  .badge-fields { margin: 0; }
+
+  .badge-fields > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dominic Yeakel — Cybersecurity Portfolio</title>
+<meta name="description" content="Dominic Yeakel's cybersecurity portfolio, focused on identity and access management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e16;
+    --bg-raised: #10182a;
+    --line: #263151;
+    --line-soft: #1a2238;
+    --text: #e9edf6;
+    --text-muted: #97a2ba;
+    --gold: #d7a44e;
+    --gold-soft: rgba(215, 164, 78, 0.14);
+    --teal: #57d0c2;
+    --teal-soft: rgba(87, 208, 194, 0.14);
+    --radius-card: 18px;
+    --max: 980px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+  h1, h2, h3 {
+    font-family: "Space Grotesk", "Inter", sans-serif;
+    margin: 0;
+    color: var(--text);
+
+
+  .taskbar {
+  }
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+    display: flex;
+    flex: 1;
+  }
+  .primary-links a {
+    text-decoration: none;
+    font-size: 0.94rem;
+    transition: color 0.15s ease;
+  }
+  .primary-links a:hover { color: var(--text); }
+
+  .repo-menu { position: relative; }
+
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .repo-menu summary::-webkit-details-marker { display: none; }
+
+  .repo-menu summary::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--text-muted);
+    border-bottom: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
+    margin-top: -3px;
+  }
+
+  .repo-menu[open] summary::after { transform: rotate(-135deg); margin-top: 2px; }
+
+  .repo-menu-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    gap: 2px;
+    min-width: 340px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .repo-menu-panel a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+
+  .repo-menu-panel a:hover { background: var(--line-soft); color: var(--text); }
+
+  .repo-menu-panel .repo-root {
+    grid-column: 1 / -1;
+    color: var(--teal);
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 4px;
+    padding-bottom: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .primary-links { display: none; }
+    .repo-menu-panel { grid-template-columns: 1fr; min-width: 220px; }
+  }
+
+  /* ---------- Layout shell ---------- */
+
+  main { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  section { padding: 72px 0; border-bottom: 1px solid var(--line-soft); }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow-free h2 { font-size: 1.6rem; margin-bottom: 14px; }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+    padding-top: 64px;
+  }
+
+  .hero h1 { font-size: 2.7rem; margin-bottom: 18px; }
+
+  .hero .lede {
+    color: var(--text-muted);
+    font-size: 1.08rem;
+    max-width: 46ch;
+    margin: 0 0 30px;
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary, .btn-ghost {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 0.94rem;
+    font-weight: 500;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: #191204;
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--line);
+    color: var(--text);
+  .repo-menu summary {
+
+    color: var(--text-muted);
+
+    gap: 22px;
+
+  .primary-links {
+    padding: 4px 10px;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+
+  .brand {
+    font-family: "Space Grotesk", sans-serif;
+
+    max-width: var(--max);
+  .taskbar-inner {
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+    z-index: 20;
+    background: rgba(10, 14, 22, 0.9);
+    position: sticky;
+    top: 0;
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* ---------- Taskbar ---------- */
+  }
+    outline-offset: 3px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--teal);
+  }
+
+  a { color: inherit; }
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+
