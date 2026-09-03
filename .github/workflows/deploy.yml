@@ -30,7 +30,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: certifications-and-skills/site
+          publish_dir: site
           destination_dir: ${{ env.DEST }}
           publish_branch: gh-pages
           keep_files: true
