@@ -95,8 +95,8 @@
 
   .primary-links {
     display: flex;
-    gap: 22px;
-    flex: 1;
+    gap: 26px;
+    margin-left: auto;
   }
 
   .primary-links a {
@@ -108,73 +108,9 @@
 
   .primary-links a:hover { color: var(--text); }
 
-  .repo-menu { position: relative; }
-
-  .repo-menu summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 14px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: var(--text);
-    white-space: nowrap;
-  }
-
-  .repo-menu summary::-webkit-details-marker { display: none; }
-
-  .repo-menu summary::after {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-right: 1.5px solid var(--text-muted);
-    border-bottom: 1.5px solid var(--text-muted);
-    transform: rotate(45deg);
-    margin-top: -3px;
-  }
-
-  .repo-menu[open] summary::after { transform: rotate(-135deg); margin-top: 2px; }
-
-  .repo-menu-panel {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 8px);
-    background: var(--bg-raised);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 8px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
-    gap: 2px;
-    min-width: 340px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-  }
-
-  .repo-menu-panel a {
-    display: block;
-    padding: 8px 10px;
-    border-radius: 7px;
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 0.88rem;
-  }
-
-  .repo-menu-panel a:hover { background: var(--line-soft); color: var(--text); }
-
-  .repo-menu-panel .repo-root {
-    grid-column: 1 / -1;
-    color: var(--teal);
-    border-bottom: 1px solid var(--line-soft);
-    margin-bottom: 4px;
-    padding-bottom: 10px;
-  }
-
   @media (max-width: 640px) {
-    .primary-links { display: none; }
-    .repo-menu-panel { grid-template-columns: 1fr; min-width: 220px; }
+    .primary-links { gap: 16px; }
+    .primary-links a { font-size: 0.86rem; }
   }
 
   /* ---------- Layout shell ---------- */
@@ -189,10 +125,6 @@
   /* ---------- Hero ---------- */
 
   .hero {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 48px;
-    align-items: center;
     padding-top: 64px;
   }
 
@@ -229,92 +161,7 @@
 
   .btn-primary:hover, .btn-ghost:hover { transform: translateY(-1px); }
 
-  /* Access badge card */
-
-  .badge-card {
-    background: linear-gradient(165deg, var(--bg-raised), #0c1120);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-card);
-    padding: 22px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .badge-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 85% -10%, var(--gold-soft), transparent 55%);
-    pointer-events: none;
-  }
-
-  .badge-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .badge-chip {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: var(--gold-soft);
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-  }
-
-  .badge-status {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 0.82rem;
-    color: var(--teal);
-  }
-
-  .badge-status .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--teal);
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-  }
-
-  .badge-fields { margin: 0; }
-
-  .badge-fields > div {
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    padding: 11px 0;
-    border-top: 1px solid var(--line-soft);
-  }
-
-  .badge-fields > div:first-child { border-top: none; }
-
-  .badge-fields dt {
-    color: var(--text-muted);
-    font-size: 0.84rem;
-  }
-
-  .badge-fields dd {
-    margin: 0;
-    font-size: 0.86rem;
-    text-align: right;
-  }
-
   @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; padding-top: 40px; }
     .hero h1 { font-size: 2.2rem; }
   }
 
@@ -345,6 +192,43 @@
 
   @media (max-width: 760px) {
     .focus-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Education & certifications ---------- */
+
+  .cert-list { display: grid; gap: 12px; }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+
+  .cert-item.placeholder { border-style: dashed; }
+
+  .cert-item h3 { font-size: 0.96rem; margin-bottom: 4px; }
+
+  .cert-sub { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+
+  .cert-status {
+    flex-shrink: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .cert-status.progress { color: var(--gold); background: var(--gold-soft); }
+  .cert-status.active { color: var(--teal); background: var(--teal-soft); }
+  .cert-status.pending { color: var(--text-muted); border: 1px solid var(--line); }
+
+  @media (max-width: 560px) {
+    .cert-item { flex-direction: column; align-items: flex-start; gap: 10px; }
   }
 
   /* ---------- Skills ---------- */
@@ -380,24 +264,48 @@
     .skill-row { grid-template-columns: 1fr; gap: 10px; }
   }
 
-  /* ---------- Featured project ---------- */
+  /* ---------- Repository ---------- */
 
-  .project-placeholder {
-    border: 1px dashed var(--line);
-    border-radius: var(--radius-card);
-    padding: 44px 28px;
-    text-align: center;
-    color: var(--text-muted);
-  }
+  .repo-intro { color: var(--text-muted); max-width: 60ch; margin: 0 0 28px; }
 
-  .project-placeholder .lock {
-    width: 34px;
-    height: 34px;
-    margin: 0 auto 16px;
+  .repo-group-label {
+    font-size: 0.8rem;
     color: var(--gold);
+    margin: 0 0 14px;
   }
 
-  .project-placeholder p { max-width: 44ch; margin: 8px auto 0; font-size: 0.92rem; }
+  .repo-group + .repo-group { margin-top: 32px; }
+
+  .repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .repo-card {
+    display: block;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+    color: var(--text);
+    transition: border-color 0.15s ease;
+  }
+
+  .repo-card:hover { border-color: var(--teal); }
+
+  .repo-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
+
+  .repo-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0 0 14px;
+  }
+
+  .repo-card span {
+    font-size: 0.82rem;
+    color: var(--teal);
+  }
 
   /* ---------- Footer ---------- */
 
@@ -424,23 +332,10 @@
     <a href="#top" class="brand">DY</a>
     <nav class="primary-links">
       <a href="#focus">Focus</a>
+      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
-      <a href="#project">Project</a>
+      <a href="#repository">Repository</a>
     </nav>
-    <details class="repo-menu">
-      <summary>Repository</summary>
-      <div class="repo-menu-panel">
-        <a class="repo-root" href="https://github.com/Jychief/cybersecurity-portfolio">Full repository →</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/soc-tools">SOC tools</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/malware-analysis">Malware analysis</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/grc">GRC</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/research-and-writeups">Research &amp; writeups</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/presentations">Presentations</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/templates">Templates</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/certifications-and-skills">Certifications &amp; skills</a>
-        <a href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/tls-audits">TLS audits</a>
-      </div>
-    </details>
   </div>
 </header>
 
@@ -449,24 +344,11 @@
   <section class="hero" id="top">
     <div class="hero-text">
       <h1>Dominic Yeakel</h1>
-      <p class="lede">Recent college graduate building a career in identity and access management — working toward Security+ and stacking up hands-on labs along the way.</p>
+      <p class="lede">Recent Penn State grad building a career in cybersecurity with an interest in identity and access management. I am working everyday to expand my knowledge through labs and side projects because in cybersecurity, learning never stops.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="https://github.com/Jychief/cybersecurity-portfolio">View the repository</a>
+        <a class="btn-primary" href="https://github.com/Jychief">View GitHub</a>
         <a class="btn-ghost" href="https://www.linkedin.com/in/dominic-yeakel-a51b78304">Connect on LinkedIn</a>
       </div>
-    </div>
-
-    <div class="badge-card" aria-hidden="true">
-      <div class="badge-top">
-        <span class="badge-chip">DY</span>
-        <span class="badge-status"><span class="dot"></span>In progress</span>
-      </div>
-      <dl class="badge-fields">
-        <div><dt>Name</dt><dd>Dominic Yeakel</dd></div>
-        <div><dt>Track</dt><dd>Identity &amp; access management</dd></div>
-        <div><dt>Certification</dt><dd>Security+</dd></div>
-        <div><dt>Status</dt><dd>Studying</dd></div>
-      </dl>
     </div>
   </section>
 
@@ -474,8 +356,8 @@
     <div class="focus-grid">
       <div>
         <h2>Why identity and access</h2>
-        <p>Most breaches don't start with a clever exploit — they start with an account that had more access than it should have, or a credential that should have been revoked and wasn't. That's the problem IAM exists to solve, and it's the corner of security I want to spend my career in.</p>
-        <p>I'm approaching it from the fundamentals up: networking and systems administration first, then the identity-specific layer — directory services, provisioning, certificates, and the policies that decide who gets access to what.</p>
+        <p>Most breaches don't start with a clever exploit, rather, they start with an account that had more access than it should have, or a credential that should've been revoked and wasn't. That's the problem IAM exists to solve, and it's the corner of security I want to spend my career in.</p>
+        <p>I'm building toward it from the ground up: systems and network fundamentals first, then the identity-specific layer — directory services, provisioning, certificates, and the policies that decide who gets access to what.</p>
       </div>
       <ul class="focus-points">
         <li>
@@ -495,6 +377,40 @@
           <span>Looking for hands-on experience that puts these fundamentals into practice.</span>
         </li>
       </ul>
+    </div>
+  </section>
+
+  <section class="education eyebrow-free" id="education">
+    <h2>Education &amp; certifications</h2>
+    <div class="cert-list">
+      <div class="cert-item">
+        <div>
+          <h3>B.S. in Cybersecurity Analytics and Operations</h3>
+          <p class="cert-sub">Pennsylvania State University</p>
+        </div>
+        <span class="cert-status active">Completed</span>
+      </div>
+      <div class="cert-item">
+        <div>
+          <h3>NSA/DHS CAE Certificate in Cyber Defense</h3>
+          <p class="cert-sub">National Centers of Academic Excellence in Cybersecurity</p>
+        </div>
+        <span class="cert-status active">Completed</span>
+      </div>
+      <div class="cert-item">
+        <div>
+          <h3>CompTIA Security+</h3>
+          <p class="cert-sub">Working toward completion.</p>
+        </div>
+        <span class="cert-status progress">In progress</span>
+      </div>
+      <div class="cert-item">
+        <div>
+          <h3>Continuous technical development</h3>
+          <p class="cert-sub">Maintaining a growing set of labs, research, and hands-on practice.</p>
+        </div>
+        <span class="cert-status active">Active</span>
+      </div>
     </div>
   </section>
 
@@ -581,15 +497,80 @@
     </div>
   </section>
 
-  <section class="project eyebrow-free" id="project">
-    <h2>Featured project</h2>
-    <div class="project-placeholder">
-      <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-        <rect x="4" y="10" width="16" height="10" rx="2"/>
-        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
-      </svg>
-      <h3>Credential pending</h3>
-      <p>This is where I'll walk through the project I'm proudest of, once it's finished. Check back soon — or browse the repository in the meantime.</p>
+  <section class="repository eyebrow-free" id="repository">
+    <h2>Explore the repository</h2>
+    <p class="repo-intro">The GitHub repository behind this site holds the evidence and documentation behind the skills above.</p>
+
+    <div class="repo-group">
+      <p class="repo-group-label">Labs</p>
+      <div class="repo-grid">
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/networking-security-foundations">
+          <h3>Networking &amp; Security Foundations</h3>
+          <p>Core networking concepts and the security fundamentals everything else builds on.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/linux-windows-administration">
+          <h3>Linux/Windows Administration</h3>
+          <p>System administration across Linux and Windows, including identity-relevant tools like AD and Group Policy.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/virtualization-containers">
+          <h3>Virtualization &amp; Containers</h3>
+          <p>Working with virtual machines and containerized environments for lab and testing use.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/network-security-cryptography">
+          <h3>Network Security &amp; Cryptography</h3>
+          <p>Encryption, PKI, and the protocols that keep network traffic and identities trustworthy.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/next-gen-firewalls">
+          <h3>Next-Gen Firewalls</h3>
+          <p>Configuring and testing modern firewall capabilities beyond basic packet filtering.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/threats-vulnerabilities">
+          <h3>Threats &amp; Vulnerabilities</h3>
+          <p>Identifying, classifying, and reasoning about threats and vulnerabilities in real systems.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/soc-ops-ir-ai">
+          <h3>SOC Ops, IR &amp; AI</h3>
+          <p>Security operations workflows, incident response, and applying AI to SOC work.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/soc-tools-data-analytics">
+          <h3>SOC Tools &amp; Data Analytics</h3>
+          <p>Hands-on practice with SOC tooling and analyzing security data at scale.</p>
+          <span>Open folder →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/social-engineering">
+          <h3>Social Engineering</h3>
+          <p>Understanding human-focused attack techniques and how to defend against them.</p>
+          <span>Open folder →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="repo-group">
+      <p class="repo-group-label">Projects</p>
+      <div class="repo-grid">
+        <a class="repo-card" href="https://github.com/Jychief/PhishShare">
+          <h3>PhishShare</h3>
+          <p>AI-powered platform for detecting email phishing and browsing a community-built database of real phishing examples.</p>
+          <span>View project →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/Bluetooth-Vulnerability-Scanner">
+          <h3>BlueGuard</h3>
+          <p>ESP32-based Bluetooth security scanner that detects nearby devices and flags vulnerabilities like MAC tracking and exposed services.</p>
+          <span>View project →</span>
+        </a>
+        <a class="repo-card" href="https://github.com/Jychief/SecuriVoice">
+          <h3>SecuriVoice</h3>
+          <p>AI-powered voicemail phishing detector that combines text and audio analysis to catch vishing attempts.</p>
+          <span>View project →</span>
+        </a>
+      </div>
     </div>
   </section>
 
