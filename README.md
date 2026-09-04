@@ -42,7 +42,6 @@ Most breaches don't start with a clever exploit, rather, they start with an acco
 | [soc-ops-ir-ai](./soc-ops-ir-ai) | SOC operations, incident response, and AI in the SOC |
 | [soc-tools-data-analytics](./soc-tools-data-analytics) | SOC tooling and security data analytics |
 | [social-engineering](./social-engineering) | Social engineering and human-focused attack labs |
-| [certifications-and-skills](./certifications-and-skills) | Living tracker of certifications, labs, and tools I know |
 
 ## Projects
 | Project | Description |
