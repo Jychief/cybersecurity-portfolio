@@ -91,6 +91,7 @@
     border-radius: 8px;
     padding: 4px 10px;
     color: var(--gold);
+    background: var(--bg-raised);
   }
 
   .primary-links {
@@ -159,7 +160,46 @@
     color: var(--text);
   }
 
-  .btn-primary:hover, .btn-ghost:hover { transform: translateY(-1px); }
+  .btn-primary:hover, .btn-ghost:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .btn-ghost:hover { border-color: var(--teal); }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 28px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 13px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: var(--text);
+    background: var(--bg-raised);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .hero-badge:hover { transform: translateY(-2px); }
+
+  .hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
+  .hero-badge.progress { border-color: var(--gold); }
+  .hero-badge.progress .dot { background: var(--gold); }
+  .hero-badge:not(.progress) { border-color: var(--teal); }
 
   @media (max-width: 760px) {
     .hero h1 { font-size: 2.2rem; }
@@ -186,6 +226,13 @@
     display: flex;
     gap: 12px;
     align-items: flex-start;
+    background: var(--bg-raised);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .focus-points li:hover {
+    border-color: var(--teal);
+    transform: translateX(3px);
   }
 
   .focus-points svg { flex-shrink: 0; margin-top: 2px; color: var(--teal); }
@@ -206,6 +253,13 @@
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 16px 18px;
+    background: var(--bg-raised);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .cert-item:hover:not(.placeholder) {
+    border-color: var(--teal);
+    transform: translateX(3px);
   }
 
   .cert-item.placeholder { border-style: dashed; }
@@ -223,9 +277,9 @@
     white-space: nowrap;
   }
 
-  .cert-status.progress { color: var(--gold); background: var(--gold-soft); }
-  .cert-status.active { color: var(--teal); background: var(--teal-soft); }
-  .cert-status.pending { color: var(--text-muted); border: 1px solid var(--line); }
+  .cert-status.progress { color: var(--gold); background: linear-gradient(var(--gold-soft), var(--gold-soft)), var(--bg-raised); }
+  .cert-status.active { color: var(--teal); background: linear-gradient(var(--teal-soft), var(--teal-soft)), var(--bg-raised); }
+  .cert-status.pending { color: var(--text-muted); border: 1px solid var(--line); background: var(--bg-raised); }
 
   @media (max-width: 560px) {
     .cert-item { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -239,9 +293,32 @@
     gap: 24px;
     padding: 22px 0;
     border-top: 1px solid var(--line-soft);
+    transition: background 0.15s ease;
+    border-radius: 10px;
   }
 
+  .skill-row:hover { background: var(--bg-raised); }
+
   .skill-row:first-of-type { border-top: none; }
+
+  .skill-head { display: flex; gap: 14px; align-items: flex-start; }
+
+  .skill-tile {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: linear-gradient(var(--gold-soft), var(--gold-soft)), var(--bg-raised);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+  }
 
   .skill-row h3 { font-size: 1.02rem; margin-bottom: 6px; }
 
@@ -256,10 +333,18 @@
     border: 1px solid var(--gold);
     border-radius: 7px;
     color: var(--gold);
+    background: var(--bg-raised);
+    transition: background 0.15s ease, transform 0.15s ease;
+    display: inline-block;
+  }
+
+  .chip:hover {
+    background: linear-gradient(var(--gold-soft), var(--gold-soft)), var(--bg-raised);
+    transform: translateY(-2px);
   }
 
   @media (max-width: 760px) {
-    .skill-row { grid-template-columns: 1fr; gap: 10px; }
+    .skill-row { grid-template-columns: 1fr; gap: 14px; padding: 18px 14px; }
   }
 
   /* ---------- Repository ---------- */
@@ -287,10 +372,33 @@
     border-radius: 14px;
     padding: 18px;
     color: var(--text);
-    transition: border-color 0.15s ease;
+    background: var(--bg-raised);
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
 
-  .repo-card:hover { border-color: var(--teal); }
+  .repo-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .repo-card-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 26px;
+    padding: 0 8px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    background: linear-gradient(var(--teal-soft), var(--teal-soft)), var(--bg-raised);
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+  }
 
   .repo-card h3 { font-size: 0.98rem; margin-bottom: 6px; }
 
@@ -300,7 +408,7 @@
     margin: 0 0 14px;
   }
 
-  .repo-card span {
+  .repo-card span.repo-card-link {
     font-size: 0.82rem;
     color: var(--teal);
   }
@@ -321,18 +429,42 @@
 
   footer a { text-decoration: underline; text-underline-offset: 3px; color: var(--text-muted); }
   footer a:hover { color: var(--text); }
+
+  /* ---------- Scroll decode effect ---------- */
+
+  .is-decoding {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--teal);
+  }
+
+  #ambient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 12% 8%, var(--gold-soft), transparent 40%),
+      radial-gradient(circle at 88% 92%, var(--teal-soft), transparent 40%),
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size: auto, auto, 44px 44px, 44px 44px;
+    background-color: var(--bg);
+    opacity: 0.6;
+  }
 </style>
 </head>
 <body>
+
+<div id="ambient-bg" aria-hidden="true"></div>
 
 <header class="taskbar">
   <div class="taskbar-inner">
     <a href="#top" class="brand">DY</a>
     <nav class="primary-links">
-      <a href="#focus">Focus</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#repository">Repository</a>
+      <a href="#focus">./Focus</a>
+      <a href="#education">./Education</a>
+      <a href="#skills">./Skills</a>
+      <a href="#repository">./Repository</a>
     </nav>
   </div>
 </header>
@@ -343,6 +475,11 @@
     <div class="hero-text">
       <h1>Dominic Yeakel</h1>
       <p class="lede">Recent Penn State grad building a career in cybersecurity with an interest in identity and access management. I am working everyday to expand my knowledge through labs and side projects because in cybersecurity, learning never stops.</p>
+      <div class="hero-badges">
+        <span class="hero-badge"><span class="dot"></span>B.S. Cybersecurity Analytics &amp; Operations</span>
+        <span class="hero-badge"><span class="dot"></span>NSA/DHS CAE Cyber Defense</span>
+        <span class="hero-badge progress"><span class="dot"></span>Security+ — In progress</span>
+      </div>
       <div class="hero-actions">
         <a class="btn-primary" href="https://github.com/Jychief">View GitHub</a>
         <a class="btn-ghost" href="https://www.linkedin.com/in/dominic-yeakel-a51b78304">Connect on LinkedIn</a>
@@ -417,9 +554,12 @@
     <h2>Skills</h2>
 
     <div class="skill-row">
-      <div>
-        <h3>Networking &amp; security fundamentals</h3>
-        <p class="skill-desc">The groundwork everything else sits on.</p>
+      <div class="skill-head">
+        <span class="skill-tile">NET</span>
+        <div>
+          <h3>Networking &amp; security fundamentals</h3>
+          <p class="skill-desc">The groundwork everything else sits on.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip">TCP/IP</span>
@@ -432,9 +572,12 @@
     </div>
 
     <div class="skill-row">
-      <div>
-        <h3>Linux &amp; Windows administration</h3>
-        <p class="skill-desc">Where identity administration actually lives day to day.</p>
+      <div class="skill-head">
+        <span class="skill-tile">SYS</span>
+        <div>
+          <h3>Linux &amp; Windows administration</h3>
+          <p class="skill-desc">Where identity administration actually lives day to day.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip iam">Active Directory</span>
@@ -446,9 +589,12 @@
     </div>
 
     <div class="skill-row">
-      <div>
-        <h3>SOC tools &amp; SIEM</h3>
-        <p class="skill-desc">Watching what identities actually do once they have access.</p>
+      <div class="skill-head">
+        <span class="skill-tile">SOC</span>
+        <div>
+          <h3>SOC tools &amp; SIEM</h3>
+          <p class="skill-desc">Watching what identities actually do once they have access.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip">Splunk</span>
@@ -457,9 +603,12 @@
     </div>
 
     <div class="skill-row">
-      <div>
-        <h3>Cryptography &amp; PKI</h3>
-        <p class="skill-desc">How systems prove who they are to each other.</p>
+      <div class="skill-head">
+        <span class="skill-tile">PKI</span>
+        <div>
+          <h3>Cryptography &amp; PKI</h3>
+          <p class="skill-desc">How systems prove who they are to each other.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip iam">Digital certificates</span>
@@ -472,9 +621,12 @@
     </div>
 
     <div class="skill-row">
-      <div>
-        <h3>Governance, risk &amp; compliance</h3>
-        <p class="skill-desc">The policy layer that defines what access should be allowed in the first place.</p>
+      <div class="skill-head">
+        <span class="skill-tile">GRC</span>
+        <div>
+          <h3>Governance, risk &amp; compliance</h3>
+          <p class="skill-desc">The policy layer that defines what access should be allowed in the first place.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip">NIST CSF</span>
@@ -486,9 +638,12 @@
     </div>
 
     <div class="skill-row">
-      <div>
-        <h3>Data analytics</h3>
-        <p class="skill-desc">Making sense of access logs and audit data.</p>
+      <div class="skill-head">
+        <span class="skill-tile">DATA</span>
+        <div>
+          <h3>Data analytics</h3>
+          <p class="skill-desc">Making sense of access logs and audit data.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip">SQL</span>
@@ -496,9 +651,12 @@
     </div>
 
     <div class="skill-row">
-      <div>
-        <h3>Coding languages</h3>
-        <p class="skill-desc">Languages I've written and worked with.</p>
+      <div class="skill-head">
+        <span class="skill-tile">DEV</span>
+        <div>
+          <h3>Coding languages</h3>
+          <p class="skill-desc">Languages I've written and worked with.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip">Java</span>
@@ -512,9 +670,12 @@
     </div>
 
     <div class="skill-row">
-      <div>
-        <h3>Other skills</h3>
-        <p class="skill-desc">Additional tools from coursework and hands-on practice.</p>
+      <div class="skill-head">
+        <span class="skill-tile">MISC</span>
+        <div>
+          <h3>Other skills</h3>
+          <p class="skill-desc">Additional tools from coursework and hands-on practice.</p>
+        </div>
       </div>
       <div class="chip-list">
         <span class="chip">Microsoft Excel</span>
@@ -533,49 +694,58 @@
       <p class="repo-group-label">Labs</p>
       <div class="repo-grid">
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/networking-security-foundations">
+          <span class="repo-card-tile">NET</span>
           <h3>Networking &amp; Security Foundations</h3>
           <p>Core networking concepts and the security fundamentals everything else builds on.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/linux-windows-administration">
+          <span class="repo-card-tile">SYS</span>
           <h3>Linux/Windows Administration</h3>
           <p>System administration across Linux and Windows, including identity-relevant tools like AD and Group Policy.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/virtualization-containers">
+          <span class="repo-card-tile">VIRT</span>
           <h3>Virtualization &amp; Containers</h3>
           <p>Working with virtual machines and containerized environments for lab and testing use.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/network-security-cryptography">
+          <span class="repo-card-tile">PKI</span>
           <h3>Network Security &amp; Cryptography</h3>
           <p>Encryption, PKI, and the protocols that keep network traffic and identities trustworthy.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/next-gen-firewalls">
+          <span class="repo-card-tile">FW</span>
           <h3>Next-Gen Firewalls</h3>
           <p>Configuring and testing modern firewall capabilities beyond basic packet filtering.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/threats-vulnerabilities">
+          <span class="repo-card-tile">VULN</span>
           <h3>Threats &amp; Vulnerabilities</h3>
           <p>Identifying, classifying, and reasoning about threats and vulnerabilities in real systems.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/soc-ops-ir-ai">
+          <span class="repo-card-tile">IR</span>
           <h3>SOC Ops, IR &amp; AI</h3>
           <p>Security operations workflows, incident response, and applying AI to SOC work.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/soc-tools-data-analytics">
+          <span class="repo-card-tile">SOC</span>
           <h3>SOC Tools &amp; Data Analytics</h3>
           <p>Hands-on practice with SOC tooling and analyzing security data at scale.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/tree/main/social-engineering">
+          <span class="repo-card-tile">SE</span>
           <h3>Social Engineering</h3>
           <p>Understanding human-focused attack techniques and how to defend against them.</p>
-          <span>Open folder →</span>
+          <span class="repo-card-link">Open folder →</span>
         </a>
       </div>
     </div>
@@ -584,19 +754,22 @@
       <p class="repo-group-label">Projects</p>
       <div class="repo-grid">
         <a class="repo-card" href="https://github.com/Jychief/PhishShare">
+          <span class="repo-card-tile">PHISH</span>
           <h3>PhishShare</h3>
           <p>AI-powered platform for detecting email phishing and browsing a community-built database of real phishing examples.</p>
-          <span>View project →</span>
+          <span class="repo-card-link">View project →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/Bluetooth-Vulnerability-Scanner">
+          <span class="repo-card-tile">BLE</span>
           <h3>BlueGuard</h3>
           <p>ESP32-based Bluetooth security scanner that detects nearby devices and flags vulnerabilities like MAC tracking and exposed services.</p>
-          <span>View project →</span>
+          <span class="repo-card-link">View project →</span>
         </a>
         <a class="repo-card" href="https://github.com/Jychief/SecuriVoice">
+          <span class="repo-card-tile">VOICE</span>
           <h3>SecuriVoice</h3>
           <p>AI-powered voicemail phishing detector that combines text and audio analysis to catch vishing attempts.</p>
-          <span>View project →</span>
+          <span class="repo-card-link">View project →</span>
         </a>
       </div>
     </div>
@@ -611,6 +784,56 @@
     <a href="https://www.linkedin.com/in/dominic-yeakel-a51b78304">LinkedIn</a>
   </span>
 </footer>
+
+<script>
+  (function () {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    var chars = '█▓▒░#$%&*01';
+
+    function decodeText(el, intervalMs, revealEvery) {
+      var original = el.textContent;
+      var revealed = 0;
+      var frame = 0;
+      el.classList.add('is-decoding');
+
+      var interval = setInterval(function () {
+        var output = '';
+        for (var i = 0; i < original.length; i++) {
+          if (i < revealed || original[i] === ' ') {
+            output += original[i];
+          } else {
+            output += chars[Math.floor(Math.random() * chars.length)];
+          }
+        }
+        el.textContent = output;
+        frame++;
+        if (frame % revealEvery === 0) revealed++;
+
+        if (revealed >= original.length) {
+          clearInterval(interval);
+          el.textContent = original;
+          el.classList.remove('is-decoding');
+        }
+      }, intervalMs);
+    }
+
+    var targets = document.querySelectorAll('h1, h2, .lede');
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var isLede = entry.target.classList.contains('lede');
+          decodeText(entry.target, isLede ? 18 : 35, isLede ? 1 : 2);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+
+    targets.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
