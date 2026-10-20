@@ -161,7 +161,7 @@
   section { padding: 0; margin-bottom: 40px; }
   section:last-of-type { margin-bottom: 64px; }
 
-  .focus, .education, .skills, .repository {
+  .focus, .education, .skills, .capstone, .repository {
     background: var(--bg-raised);
     border: 1px solid var(--line);
     border-radius: 22px;
@@ -169,7 +169,7 @@
   }
 
   @media (max-width: 640px) {
-    .focus, .education, .skills, .repository {
+    .focus, .education, .skills, .capstone, .repository {
       padding: 32px 22px;
       border-radius: 16px;
     }
@@ -409,6 +409,13 @@
 
   .repo-intro { color: var(--text-muted); max-width: 60ch; margin: 0 0 28px; }
 
+  .capstone-summary {
+    color: var(--text-muted);
+    max-width: 72ch;
+    margin: 0 0 28px;
+    line-height: 1.7;
+  }
+
   .repo-group-label {
     font-size: 0.8rem;
     color: var(--gold);
@@ -470,6 +477,20 @@
     font-size: 0.82rem;
     color: var(--teal);
   }
+
+  .repo-card-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .repo-card-links a {
+    font-size: 0.82rem;
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  .repo-card-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
   /* ---------- Footer ---------- */
 
@@ -741,6 +762,53 @@
         <span class="chip">RStudio</span>
         <span class="chip">FTK</span>
         <span class="chip">Autopsy</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="capstone eyebrow-free" id="capstone">
+    <h2>Banking Capstone</h2>
+    <p class="capstone-summary">This capstone project simulates the security program of a fictional bank in Microsoft Azure. Working as a two-person team with Jason Man, we built and hardened a Windows domain controller and a Linux web server, applying network segmentation, least-privilege access, encryption in transit, endpoint monitoring, and vulnerability management. We mapped our controls to PCI DSS and wrote an incident response plan, then put it to the test in a live simulated attack, taking the incident from detection through recovery and a lessons-learned review. The documents and presentation here cover the full build, the compliance evidence, and how we responded to the incident.</p>
+
+    <div class="repo-grid">
+      <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/blob/main/banking-capstone/Team_4_Capstone_Presentation.pdf">
+        <span class="repo-card-tile">PRES</span>
+        <h3>Presentation</h3>
+        <p>The capstone walkthrough: the build, the controls, and the live incident response.</p>
+        <span class="repo-card-link">View document →</span>
+      </a>
+      <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/blob/main/banking-capstone/Ironbridge_Infrastructure_Documentation.pdf">
+        <span class="repo-card-tile">INFRA</span>
+        <h3>Infrastructure Document</h3>
+        <p>Azure architecture, the hardened domain controller and web server, and network segmentation.</p>
+        <span class="repo-card-link">View document →</span>
+      </a>
+      <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/blob/main/banking-capstone/TEAM_4__FORENSIC_EVIDENCE.pdf">
+        <span class="repo-card-tile">DFIR</span>
+        <h3>Forensic Evidence</h3>
+        <p>Evidence collected and analyzed from the simulated attack.</p>
+        <span class="repo-card-link">View document →</span>
+      </a>
+      <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/blob/main/banking-capstone/Ironbridge_National_Bank___Incident_Response_Plan.pdf">
+        <span class="repo-card-tile">IR</span>
+        <h3>IR Plan</h3>
+        <p>The incident response plan, mapped to PCI DSS, from detection through recovery.</p>
+        <span class="repo-card-link">View document →</span>
+      </a>
+      <a class="repo-card" href="https://github.com/Jychief/cybersecurity-portfolio/blob/main/banking-capstone/Ironbridge_National_Bank_Security_Awareness_and_Training_Program.pdf">
+        <span class="repo-card-tile">SAT</span>
+        <h3>Security Awareness &amp; Training Program</h3>
+        <p>The training program built to reduce human-factor risk across the bank.</p>
+        <span class="repo-card-link">View document →</span>
+      </a>
+      <div class="repo-card">
+        <span class="repo-card-tile">RUN</span>
+        <h3>Playbooks / Runbooks</h3>
+        <p>Step-by-step response procedures for the incident scenarios we tested, plus runbooks for routine security and recovery tasks.</p>
+        <div class="repo-card-links">
+          <a href="https://github.com/Jychief/cybersecurity-portfolio/blob/main/banking-capstone/Ironbridge_Playbooks.pdf">Playbooks →</a>
+          <a href="https://github.com/Jychief/cybersecurity-portfolio/blob/main/banking-capstone/Ironbridge_Runbooks.pdf">Runbooks →</a>
+        </div>
       </div>
     </div>
   </section>
