@@ -161,7 +161,7 @@
   section { padding: 0; margin-bottom: 40px; }
   section:last-of-type { margin-bottom: 64px; }
 
-  .focus, .education, .skills, .capstone, .repository {
+  .focus, .education, .skills, .takeaways, .capstone, .repository {
     background: var(--bg-raised);
     border: 1px solid var(--line);
     border-radius: 22px;
@@ -169,7 +169,7 @@
   }
 
   @media (max-width: 640px) {
-    .focus, .education, .skills, .capstone, .repository {
+    .focus, .education, .skills, .takeaways, .capstone, .repository {
       padding: 32px 22px;
       border-radius: 16px;
     }
@@ -404,6 +404,51 @@
   @media (max-width: 760px) {
     .skill-row { grid-template-columns: 1fr; gap: 14px; padding: 18px 14px; }
   }
+
+  /* ---------- Takeaways ---------- */
+
+  .take-group + .take-group { margin-top: 36px; }
+
+  .take-label {
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin: 0 0 14px;
+  }
+
+  .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .quote-card {
+    margin: 0;
+    padding: 22px 22px 22px 24px;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    border-radius: 14px;
+    background: var(--bg-raised);
+    font-size: 1.08rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .take-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  .take-card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+    background: var(--bg-raised);
+  }
+
+  .take-card h3 { font-size: 0.98rem; margin-bottom: 6px; color: var(--teal); }
+
+  .take-card p { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
 
   /* ---------- Repository ---------- */
 
@@ -762,6 +807,79 @@
         <span class="chip">RStudio</span>
         <span class="chip">FTK</span>
         <span class="chip">Autopsy</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="takeaways eyebrow-free" id="takeaways">
+    <h2>Cybersecurity Bootcamp Takeaways</h2>
+
+    <div class="take-group">
+      <p class="take-label">Top 3 quotes</p>
+      <div class="quote-grid">
+        <blockquote class="quote-card">&ldquo;Proactively plan, effectively execute.&rdquo;</blockquote>
+        <blockquote class="quote-card">&ldquo;It&rsquo;s not if you get hacked, it&rsquo;s when.&rdquo;</blockquote>
+        <blockquote class="quote-card">&ldquo;In GRC, non-compliance is not an option.&rdquo;</blockquote>
+      </div>
+    </div>
+
+    <div class="take-group">
+      <p class="take-label">5 technical concepts that interested me</p>
+      <div class="take-grid">
+        <div class="take-card">
+          <h3>ACLs</h3>
+          <p>Access Control Lists are rules attached to a resource (file, router, firewall) that say which users or traffic are allowed or denied.</p>
+        </div>
+        <div class="take-card">
+          <h3>DAC vs MAC</h3>
+          <p>In Discretionary Access Control, the resource owner decides who gets access. In Mandatory Access Control, a central policy enforces access based on labels or clearance levels, and owners can&rsquo;t override it.</p>
+        </div>
+        <div class="take-card">
+          <h3>Type 1 vs Type 2 hypervisors</h3>
+          <p>A Type 1 hypervisor runs directly on the hardware (ESXi, Hyper-V). A Type 2 hypervisor runs as an application on top of a host OS (VirtualBox, VMware Workstation).</p>
+        </div>
+        <div class="take-card">
+          <h3>Encryption vs hashing</h3>
+          <p>Encryption is reversible with a key and protects confidentiality. Hashing is one-way and produces a fixed-length fingerprint used to verify integrity.</p>
+        </div>
+        <div class="take-card">
+          <h3>Certificate Authority / Certificates</h3>
+          <p>A certificate binds a public key to an identity. A Certificate Authority is the trusted party that issues and digitally signs certificates, so others can verify the identity is real.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="take-group">
+      <p class="take-label">7 complex concepts I didn&rsquo;t know before</p>
+      <div class="take-grid">
+        <div class="take-card">
+          <h3>BitLocker</h3>
+          <p>Windows full-disk encryption that protects data at rest, so a lost or stolen drive can&rsquo;t be read without the key (often backed by the TPM).</p>
+        </div>
+        <div class="take-card">
+          <h3>PAWs / Bastion</h3>
+          <p>A Privileged Access Workstation is a locked-down machine used only for admin tasks. A bastion host is a hardened jump server that is the single controlled entry point into a private network.</p>
+        </div>
+        <div class="take-card">
+          <h3>Supervisor vs hypervisor</h3>
+          <p>A supervisor is the OS kernel that manages a machine&rsquo;s hardware and processes. A hypervisor sits one level above, managing the virtual machines that each run their own supervisor.</p>
+        </div>
+        <div class="take-card">
+          <h3>OAuth 2.0</h3>
+          <p>An authorization framework that lets an app access your resources on another service through a limited, revocable access token, without ever seeing your password.</p>
+        </div>
+        <div class="take-card">
+          <h3>JWT (JSON Web Token)</h3>
+          <p>A compact, signed token with three parts (header, payload, signature) that carries claims about a user so a server can verify identity without a session lookup.</p>
+        </div>
+        <div class="take-card">
+          <h3>Web Proxy / Secure Web Gateways</h3>
+          <p>A web proxy sits between users and the internet to relay and filter requests. A Secure Web Gateway adds threat protection, URL filtering, and policy enforcement on that traffic.</p>
+        </div>
+        <div class="take-card">
+          <h3>SOAR</h3>
+          <p>Security Orchestration, Automation and Response connects security tools and runs automated playbooks to triage and respond to alerts faster.</p>
+        </div>
       </div>
     </div>
   </section>
